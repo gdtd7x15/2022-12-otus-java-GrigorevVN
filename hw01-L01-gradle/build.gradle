@@ -5,12 +5,8 @@ plugins {
 group = 'ru.grigorevvn'
 version = '1.0-SNAPSHOT'
 
-ext {
-    guavaVersion = '31.1-jre'
-}
-
 dependencies {
-    implementation("com.google.guava:guava:$guavaVersion")
+    implementation 'com.google.guava:guava'
 }
 
 jar {
