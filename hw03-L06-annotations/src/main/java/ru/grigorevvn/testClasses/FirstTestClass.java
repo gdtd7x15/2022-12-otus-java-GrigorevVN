@@ -24,7 +24,7 @@ public class FirstTestClass {
 
     @After
     public void afterOne() {
-        Integer.valueOf("I want to be a integer");
+        Integer.valueOf("I want to be an integer");
     }
 
     @After

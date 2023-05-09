@@ -69,7 +69,7 @@ public class Runner {
             try {
                 method.invoke(object);
             } catch (Exception e) {
-                statistic.addError(className, method.getName(), e.getCause().toString());
+                statistic.addConfigError(className, method.getName(), e.getCause().toString());
             }
         }
     }

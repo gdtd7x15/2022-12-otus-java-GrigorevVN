@@ -7,11 +7,13 @@ public class RunnerStatistic {
     List<String> success;
     List<String> failed;
     List<String> errors;
+    List<String> configErrors;
 
     public RunnerStatistic() {
         this.success =  new ArrayList<>();
         this.failed =  new ArrayList<>();
         this.errors =  new ArrayList<>();
+        this.configErrors = new ArrayList<>();
     }
 
     public void addSuccess(String className, String methodName) {
@@ -26,6 +28,10 @@ public class RunnerStatistic {
         errors.add(String.format("%s.%s: %s", className, methodName, error));
     }
 
+    public void addConfigError(String className, String methodName, String error) {
+        configErrors.add(String.format("%s.%s: %s", className, methodName, error));
+    }
+
     @Override
     public String toString() {
         return String.format("%s \n ----- \n %s", getDetailedStatistic(), getStatisticCounter());
@@ -33,7 +39,7 @@ public class RunnerStatistic {
     }
 
     private String getDetailedStatistic() {
-        return String.format("RunnerStatistic: \n Success: %s \n Failed: %s \n Errors: %s", listToSting(success), listToSting(failed),listToSting(errors));
+        return String.format("hw03-l06-annotations statistic: \n Success: %s \n Failed: %s \n Errors: %s \n Config errors: %s", listToSting(success), listToSting(failed), listToSting(errors), listToSting(configErrors));
     }
 
     private String listToSting (List<String> strings) {
@@ -45,7 +51,7 @@ public class RunnerStatistic {
     }
 
     private String getStatisticCounter(){
-        return String.format("Success [%d], Failed [%d], Errors [%d].",
-                success.size() , failed.size(), errors.size());
+        return String.format("Total: Success [%d], Failed [%d], Errors [%d], Config errors [%d].",
+                success.size() , failed.size(), errors.size(), configErrors.size());
     }
 }
