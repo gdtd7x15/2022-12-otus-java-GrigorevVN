@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+}
+
+group = 'ru.grigorevvn'
+version = '1.0-SNAPSHOT'
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'ru.grigorevvn.Runner'
+        )
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
