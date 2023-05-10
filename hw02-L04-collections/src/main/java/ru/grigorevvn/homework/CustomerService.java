@@ -7,10 +7,6 @@ public class CustomerService {
     private final Map<Customer, String> customerMap;
     private static final Comparator<Customer> customerScoreComparator = (c1, c2) -> Long.compareUnsigned(c1.getScores(), c2.getScores());
 
-    private static Map<Customer, String> getCompareByScoreMap () {
-        return new TreeMap<>(customerScoreComparator);
-    }
-
     private static Map.Entry<Customer, String> getProxyEntry (Map.Entry<Customer, String> entry) {
         if(entry != null) {
             Customer customer = new Customer(entry.getKey().getId(), entry.getKey().getName(), entry.getKey().getScores());
@@ -19,7 +15,7 @@ public class CustomerService {
         return null;
     }
     public CustomerService() {
-        customerMap = getCompareByScoreMap();
+        customerMap = new TreeMap<>(customerScoreComparator);
     }
 
     public Map.Entry<Customer, String> getSmallest() {
