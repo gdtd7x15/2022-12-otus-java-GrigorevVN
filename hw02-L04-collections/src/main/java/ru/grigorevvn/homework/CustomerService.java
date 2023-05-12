@@ -4,16 +4,9 @@ package ru.grigorevvn.homework;
 import java.util.*;
 
 public class CustomerService {
-    private final Map<Customer, String> customerMap;
+    private final TreeMap<Customer, String> customerMap;
     private static final Comparator<Customer> customerScoreComparator = (c1, c2) -> Long.compareUnsigned(c1.getScores(), c2.getScores());
 
-    private static Map.Entry<Customer, String> getProxyEntry (Map.Entry<Customer, String> entry) {
-        if(entry != null) {
-            Customer customer = new Customer(entry.getKey().getId(), entry.getKey().getName(), entry.getKey().getScores());
-            return Map.entry(customer, entry.getValue());
-        }
-        return null;
-    }
     public CustomerService() {
         customerMap = new TreeMap<>(customerScoreComparator);
     }
@@ -36,5 +29,13 @@ public class CustomerService {
 
     public void add(Customer customer, String data) {
         customerMap.put(customer, data);
+    }
+
+    private Map.Entry<Customer, String> getProxyEntry (Map.Entry<Customer, String> entry) {
+        if (entry != null) {
+            Customer customer = new Customer(entry.getKey().getId(), entry.getKey().getName(), entry.getKey().getScores());
+            return Map.entry(customer, entry.getValue());
+        }
+        return null;
     }
 }
