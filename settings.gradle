@@ -3,4 +3,4 @@ include 'hw02-L04-collections'
 include 'hw03-L06-annotations'
 include 'hw04-L08-gc'
 include 'hw05-L10-aop'
-
+include 'hw06-L12-solid'
